@@ -2,20 +2,21 @@
 // 2 - PAPER
 // 3 - SCISSORS
 
+// 1 - TIE
+// 2 - LOSE
+// 3 - WIN
 
-// let mesg = prompt('Enter: ')
-// console.log(mesg);
-
-const playerSelection = prompt('Move: ');
-const computerSelection = getComputerChoice();
 
 function getComputerChoice() {
   return choice = Math.floor((Math.random() * 3) + 1);
 }
 
-// Choice checker
+// Choice checker - remove when GUI
 
-// Choice normalizer
+// Choice normalizer - remove when GUI
+function normalizeChoice(choice) {
+  return choice.toLowerCase();
+}
 
 // Choice evaluator
 function evaluateChoice(choice) {
@@ -37,19 +38,42 @@ function evaluateChoice(choice) {
   }
 }
 
-// Single round of game
+// Single round of game - modify when GUI
 function playRound(playerSelection, computerSelection) {
   playerSelection = evaluateChoice(playerSelection);
   if (playerSelection == computerSelection) {
-    return 'TIE!'
+    return 1;
   } else if (playerSelection == 1 && computerSelection == 3) {
-    return 'You WIN! Rock beats scissors!';
+    return 3;
   } else if (playerSelection < computerSelection) {
-    return `You LOSE! ${choiceEvaluate(computerSelection)} beats ${choiceEvaluate(playerSelection)}`;
+    return 2;
   } else {
-    return `You WIN! ${choiceEvaluate(playerSelection)} beats ${choiceEvaluate(computerSelection)}`;
+    return 3;
   }
 }
 
+function game() {
+  let playerScore = 0;
+  let computerScore = 0;
+  for (i = 0 ; i < 5 ; i++) {
+    const playerSelection = normalizeChoice(prompt('Move: '));
+    const computerSelection = getComputerChoice();
 
-console.log(playRound(playerSelection, computerSelection));
+    switch (playRound(playerSelection, computerSelection)) {
+      case 1:
+        console.log('Tie');
+        break;
+      case 2:
+        console.log('Lose');
+        computerScore += 1;
+        break;
+      default:
+        console.log('Win');
+        playerScore += 1;
+    }
+
+  }
+  console.log(`Player: ${playerScore}  then Computer: ${computerScore}`);
+}
+
+game();

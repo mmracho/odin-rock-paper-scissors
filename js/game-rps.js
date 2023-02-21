@@ -11,14 +11,13 @@ function getComputerChoice() {
   return choice = Math.floor((Math.random() * 3) + 1);
 }
 
-// Choice checker - remove when GUI
 
 // Choice normalizer - remove when GUI
 function normalizeChoice(choice) {
   return choice.toLowerCase();
 }
 
-// Choice evaluator
+// Choice evaluator - if choice is invalid return 0 (ask again) | if choice is empty exit game
 function evaluateChoice(choice) {
   switch (choice) {
     case 'rock':
@@ -33,6 +32,8 @@ function evaluateChoice(choice) {
       return 'paper';
     case 3:
       return 'scissors';
+    case null:
+      return -1;
     default:
       return 0;
   }
@@ -42,13 +43,13 @@ function evaluateChoice(choice) {
 function playRound(playerSelection, computerSelection) {
   playerSelection = evaluateChoice(playerSelection);
   if (playerSelection == computerSelection) {
-    return 1;
+    return 1; // TIE
   } else if (playerSelection == 1 && computerSelection == 3) {
-    return 3;
+    return 3; // WIN
   } else if (playerSelection < computerSelection) {
-    return 2;
+    return 2; // LOSE
   } else {
-    return 3;
+    return 3; // WIN
   }
 }
 
@@ -71,9 +72,16 @@ function game() {
         console.log('Win');
         playerScore += 1;
     }
-
   }
-  console.log(`Player: ${playerScore}  then Computer: ${computerScore}`);
+
+  // Winner announce (only on fixed rounds)
+  if (playerScore == computerScore) {
+    console.log(`It's a tie! Player: ${playerScore} Computer: ${computerScore}`);
+  } else if (computerScore > playerScore) {
+    console.log(`You lose! Player: ${playerScore} Computer: ${computerScore}`);
+  } else {
+    console.log(`You win! Player: ${playerScore} Computer: ${computerScore}`);
+  }
 }
 
 game();

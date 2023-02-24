@@ -15,25 +15,45 @@
 </head>
 
 <body>
-  <!-- <header class="header"></header> -->
+  <header class="header">
+    <h1>じゃんけん</h1>
+    <p><strong>じゃんけん</strong> or <strong>じゃん拳</strong> [janken] - is the Japanese equivalent of Rock Paper Scissors.</p>
+    <p>In janken, we use グー[guu] for rock, パー[paa] for paper, and チョキ[choki] for scissors.</p>
+    <p>It plays more or less the same as the English version though, good luck!</p>
+  </header>
 
-
-  <h1>ROCK PAPER SCISSORS</h1>
-  <p>じゃん拳 (janken) - is the Japanese equivalent of Rock Paper Scissors</p>
   <div class="play-area">
     <div class="player-computer">
       <img class="computer" src="./img/ai_computer_sousa_robot.webp" alt="Computer opponent">
-      <p>Computer is thinking...</p>
+      <div>
+        <p>COMPUTER SCORE: <span id="computer-score">0</span></p>
+        <p id="computer-flavor-text">Greetings! Beep Boop</p>
+      </div>
     </div>
-    <p>add round result here</p>
+    <p>Choose a hand from the three choices below. First one to 5 points wins!</p>
     <div class="player-human">
-      <div class="btns">
-        <button id="btn-rock" class="btn-play rd-btn-style" value="1"><img src="./img/janken_gu.webp"
-            alt="Rock hand"></button>
-        <button id="btn-paper" class="btn-play rd-btn-style" value="2"><img src="./img/janken_pa.webp"
-            alt="Paper hand"></button>
-        <button id="btn-scissors" class="btn-play rd-btn-style" value="3"><img src="./img/janken_choki.webp"
-            alt="Scissors hand"></button>
+      <div>
+        <p>PLAYER SCORE: <span id="player-score">0</span></p>
+        <div class="btns">
+          <div class="btn">
+            <p>ROCK</p>
+            <button id="btn-rock" class="btn-play rd-btn-style" value="1"><img src="./img/janken_gu.webp"
+                alt="Rock hand"></button>
+            <p>グー[guu]</p>
+          </div>
+          <div class="btn">
+            <p>PAPER</p>
+            <button id="btn-paper" class="btn-play rd-btn-style" value="2"><img src="./img/janken_pa.webp"
+                alt="Paper hand"></button>
+            <p>パー[paa]</p>
+          </div>
+          <div class="btn">
+            <p>SCISSORS</p>
+            <button id="btn-scissors" class="btn-play rd-btn-style" value="3"><img src="./img/janken_choki.webp"
+                alt="Scissors hand"></button>
+            <p>チョキ[choki]</p>
+          </div>
+        </div>
       </div>
       <img class="human" src="./img/computer_hacker_white1.webp" alt="Human player">
     </div>
@@ -50,6 +70,9 @@
       <p>Author: Martin Racho</p>
       <p><a href="mailto:mmfracho@gmail.com">mmfracho@gmail.com</a></p>
       <p>Copyright 2023</p>
+    </div>
+    <div class="footer-credit footer-grps">
+      <p>IRASUTOYA Credit</p>
     </div>
   </footer>
 </body>

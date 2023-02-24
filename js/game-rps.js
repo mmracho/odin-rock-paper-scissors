@@ -9,13 +9,19 @@ let playerScore = 0;
 let computerScore = 0;
 
 
-
+const btnReset = document.querySelector('button.btn-reset');
 const buttons = document.querySelectorAll('button.btn-play');
+btnReset.addEventListener('click', resetGame)
 buttons.forEach(button => {
-  button.addEventListener('click', getPlayerChoice);
+  button.addEventListener('click', startRound);
 });
 
-function getPlayerChoice() {
+function resetGame() {
+  playerScore = computerScore = 0;
+  // MORE
+}
+
+function startRound() {
   const playerSelection = this.value;
   const computerSelection = getComputerChoice();
 
@@ -27,31 +33,43 @@ function getComputerChoice() {
   return choice = Math.floor((Math.random() * 3) + 1);
 }
 
-// Single round of game
-function playRound(playerSelection, computerSelection) {
-  if (playerSelection == computerSelection) {
-    console.log('TIE')
-    return 1;// TIE
-  } else if (playerSelection == 1 && computerSelection == 3) {
-    console.log('WIN')
-    return 3; // WIN
-  } else if (playerSelection < computerSelection) {
-    console.log('LOSE')
-    return 2; // LOSE
+function checkWinner() {
+  if (playerScore === 5 || computerScore === 5) {
+    // WE HAVE A WINNER
+    if (playerScore === 5) {
+      console.log(`You win! Player: ${playerScore} Computer: ${computerScore}`);
+    } else {
+      console.log(`You lose! Player: ${playerScore} Computer: ${computerScore}`);
+    }
+    return true;
   } else {
-    console.log('WIN')
-    return 3; // WIN
+    // NO WINNER YET
+    return false;
   }
 }
 
-function game() {
-  for (i = 0 ; i < 5 ; i++) {
-  // Winner announce (only on fixed rounds)
-  if (playerScore == computerScore) {
-    console.log(`It's a tie! Player: ${playerScore} Computer: ${computerScore}`);
-  } else if (computerScore > playerScore) {
-    console.log(`You lose! Player: ${playerScore} Computer: ${computerScore}`);
+// Single round of game
+function playRound(playerSelection, computerSelection) {
+  if (playerSelection == computerSelection) {
+    // console.log('TIE')
+  } else if (playerSelection == 1 && computerSelection == 3) {
+    // console.log('WIN')
+    playerScore += 1;
+  } else if (computerSelection == 1 && playerSelection == 3) {
+    // console.log('LOSE')
+    computerScore += 1;
+  } else if (playerSelection < computerSelection) {
+    // console.log('LOSE')
+    computerScore += 1;
   } else {
-    console.log(`You win! Player: ${playerScore} Computer: ${computerScore}`);
+    // console.log('WIN')
+    playerScore += 1;
   }
-}}
+
+  // CHECK STANDING
+  console.log(`STANDING: Player=${playerScore} | Computer=${computerScore}`);
+  if (checkWinner()) {
+    // TRIGGER RESET STUFF
+  }
+
+}

@@ -11,13 +11,14 @@ let computerScore = 0;
 
 const btnReset = document.querySelector('button.btn-reset');
 const buttons = document.querySelectorAll('button.btn-play');
-btnReset.addEventListener('click', resetGame)
+btnReset.addEventListener('click', resetGame, )
 buttons.forEach(button => {
   button.addEventListener('click', startRound);
 });
 
 function resetGame() {
-  playerScore = computerScore = 0;
+  playerScore = 0;
+  computerScore = 0;
   // MORE
 }
 

@@ -17,32 +17,39 @@
 <body>
   <!-- <header class="header"></header> -->
 
+
+  <h1>ROCK PAPER SCISSORS</h1>
+  <p>じゃん拳 (janken) - is the Japanese equivalent of Rock Paper Scissors</p>
   <div class="play-area">
-    <h1>ROCK PAPER SCISSORS</h1>
-    <h2>JANKEN</h2>
-    <div>
-      <img class="computer" src="./img/ai_computer_sousa_robot.png" alt="Computer opponent">
+    <div class="player-computer">
+      <img class="computer" src="./img/ai_computer_sousa_robot.webp" alt="Computer opponent">
+      <p>Computer is thinking...</p>
     </div>
-    <div class="btns">
-      <button id="btn-rock" class="btn-play rd-btn-style" value="1"><img src="./img/janken_gu.png"
-          alt="Rock hand"></button>
-      <button id="btn-paper" class="btn-play rd-btn-style" value="2"><img src="./img/janken_pa.png"
-          alt="Paper hand"></button>
-      <button id="btn-scissors" class="btn-play rd-btn-style" value="3"><img src="./img/janken_choki.png"
-          alt="Scissors hand"></button>
+    <p>add round result here</p>
+    <div class="player-human">
+      <div class="btns">
+        <button id="btn-rock" class="btn-play rd-btn-style" value="1"><img src="./img/janken_gu.webp"
+            alt="Rock hand"></button>
+        <button id="btn-paper" class="btn-play rd-btn-style" value="2"><img src="./img/janken_pa.webp"
+            alt="Paper hand"></button>
+        <button id="btn-scissors" class="btn-play rd-btn-style" value="3"><img src="./img/janken_choki.webp"
+            alt="Scissors hand"></button>
+      </div>
+      <img class="human" src="./img/computer_hacker_white1.webp" alt="Human player">
     </div>
     <button class="btn-reset rd-btn-style">RESET</button>
   </div>
 
   <footer class="footer">
-    <div>
+    <div class="footer-links footer-grps">
       <a href="#">LOGO</a>
       <a href="#">GitHub</a>
       <a href="#">About</a>
     </div>
-    <div>
+    <div class="footer-contact footer-grps">
       <p>Author: Martin Racho</p>
       <p><a href="mailto:mmfracho@gmail.com">mmfracho@gmail.com</a></p>
+      <p>Copyright 2023</p>
     </div>
   </footer>
 </body>

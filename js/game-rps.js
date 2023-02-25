@@ -22,7 +22,7 @@ buttons.forEach(button => {
 
 function showRoundResult(result) {
   const roundText = document.querySelector('#round-result');
-  
+
   roundText.className = 'fadeOut';
   switch (result) {
     case 'TIE':
@@ -90,8 +90,7 @@ function showMatchEnd(result) {
   const playArea = document.querySelector('.play-area');
   const matchResult = document.querySelector('.match-result');
 
-  if (result == 'WIN') img.src = './img/pose_win_boy.webp';
-  else img.src = './img/pose_lose_boy.webp';
+  img.src = result === 'WIN' ? './img/pose_win_boy.webp' : './img/pose_lose_boy.webp';
 
   playArea.classList.toggle('hide');
   matchResult.classList.toggle('hide');
@@ -134,5 +133,5 @@ function playRound(playerSelection, computerSelection) {
 
   console.log(`STANDING: Player=${playerScore} | Computer=${computerScore}`);
   checkWinner()
-  
+
 }

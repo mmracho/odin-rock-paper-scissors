@@ -35,7 +35,7 @@ function showRoundResult(result) {
       roundText.textContent = 'YOU WIN';
       break;
     default:
-      roundText.textContent = "It seems like something went wrong. You're not supposed to see this."
+      roundText.textContent = "Choose a hand from the three choices below. First one to 5 points wins!"
   }
   roundText.focus();
   roundText.className = 'fadeIn';
@@ -61,8 +61,9 @@ function resetGame() {
   playArea.classList.toggle('hide');
   matchResult.classList.toggle('hide');
   matchResult.classList.toggle('show');
-  resetScore()
+  resetScore();
   updateScore();
+  showRoundResult('restart');
 
 }
 

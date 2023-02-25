@@ -25,14 +25,14 @@
   <div class="play-area">
     <div class="player-computer">
       <img class="computer" src="./img/ai_computer_sousa_robot.webp" alt="Computer opponent">
-      <div>
+      <div class="computer-status">
         <p>COMPUTER SCORE: <span id="computer-score">0</span></p>
         <p id="computer-flavor-text">Greetings! Beep Boop</p>
       </div>
     </div>
-    <p>Choose a hand from the three choices below. First one to 5 points wins!</p>
+    <p id="round-result">Choose a hand from the three choices below. First one to 5 points wins!</p>
     <div class="player-human">
-      <div>
+      <div class="player-status">
         <p>PLAYER SCORE: <span id="player-score">0</span></p>
         <div class="btns">
           <div class="btn">
@@ -57,9 +57,9 @@
       </div>
       <img class="human" src="./img/computer_hacker_white1.webp" alt="Human player">
     </div>
-    <button class="btn-reset rd-btn-style">RESET</button>
-  </div>
 
+  </div>
+  <button class="btn-reset rd-btn-style">RESET</button>
   <footer class="footer">
     <div class="footer-links footer-grps">
       <a href="#">LOGO</a>

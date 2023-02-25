@@ -58,12 +58,14 @@ function randomizeFlavorText() {
 function resetGame() {
   const playArea = document.querySelector('.play-area');
   const matchResult = document.querySelector('.match-result');
+  const img = document.querySelector('img.end-img-win');
   playArea.classList.toggle('hide');
   matchResult.classList.toggle('hide');
   matchResult.classList.toggle('show');
   resetScore();
   updateScore();
   showRoundResult('restart');
+  img.src = "#";
 
 }
 

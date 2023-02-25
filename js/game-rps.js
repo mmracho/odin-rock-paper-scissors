@@ -37,6 +37,7 @@ function showRoundResult(result) {
     default:
       roundText.textContent = "First to 5 points wins! 最初はグー！ジャンケンポン！"
   }
+  console.log(roundText.textContent);
   roundText.focus();
   roundText.className = 'fadeIn';
 }

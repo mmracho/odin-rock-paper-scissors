@@ -26,16 +26,16 @@ function showRoundResult(result) {
   roundText.className = 'fadeOut';
   switch (result) {
     case 'TIE':
-      roundText.textContent = "IT'S A TIE";
+      roundText.textContent = "IT'S A TIE - あいこ！";
       break;
     case 'LOSE':
-      roundText.textContent = 'YOU LOSE';
+      roundText.textContent = 'YOU LOSE - 負け';
       break;
     case 'WIN':
-      roundText.textContent = 'YOU WIN';
+      roundText.textContent = 'YOU WIN - 勝ち';
       break;
     default:
-      roundText.textContent = "Choose a hand from the three choices below. First one to 5 points wins!"
+      roundText.textContent = "First to 5 points wins! 最初はグー！ジャンケンポン！"
   }
   roundText.focus();
   roundText.className = 'fadeIn';

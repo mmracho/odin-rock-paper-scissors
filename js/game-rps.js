@@ -1,6 +1,3 @@
-// 1 - ROCK
-// 2 - PAPER
-// 3 - SCISSORS
 let playerScore = 0;
 let computerScore = 0;
 let flavorText = [
@@ -22,7 +19,6 @@ buttons.forEach(button => {
 
 function showRoundResult(result) {
   const roundText = document.querySelector('#round-result');
-
   roundText.className = 'fadeOut';
   switch (result) {
     case 'TIE':
@@ -37,7 +33,6 @@ function showRoundResult(result) {
     default:
       roundText.textContent = "First to 5 points wins! 最初はグー！ジャンケンポン！"
   }
-  console.log(roundText.textContent);
   roundText.focus();
   roundText.className = 'fadeIn';
 }
@@ -45,7 +40,6 @@ function showRoundResult(result) {
 function updateScore() {
   const currentComputerScore = document.querySelector('#computer-score');
   const currentPlayerScore = document.querySelector('#player-score');
-
   currentComputerScore.textContent = computerScore;
   currentPlayerScore.textContent = playerScore;
 }
@@ -67,19 +61,16 @@ function resetGame() {
   updateScore();
   showRoundResult('restart');
   img.src = "#";
-
 }
 
 function resetScore() {
   playerScore = 0;
   computerScore = 0;
-  console.log('Score Reset')
 }
 
 function startRound() {
   const playerSelection = this.value;
   const computerSelection = getComputerChoice();
-
   randomizeFlavorText();
   playRound(playerSelection, computerSelection);
 }
@@ -92,29 +83,22 @@ function showMatchEnd(result) {
   const img = document.querySelector('img.end-img-win');
   const playArea = document.querySelector('.play-area');
   const matchResult = document.querySelector('.match-result');
-
   img.src = result === 'WIN' ? './img/pose_win_boy.webp' : './img/pose_lose_boy.webp';
-
   playArea.classList.toggle('hide');
   matchResult.classList.toggle('hide');
   matchResult.classList.toggle('show');
-
 }
 
 function checkWinner() {
   if (playerScore === 5 || computerScore === 5) {
-    // WE HAVE A WINNER
     if (playerScore === 5) {
-      console.log(`You win! Player: ${playerScore} Computer: ${computerScore}`);
       showMatchEnd('WIN');
     } else {
-      console.log(`You lose! Player: ${playerScore} Computer: ${computerScore}`);
       showMatchEnd('LOSE');
     }
   }
 }
 
-// Single round of game
 function playRound(playerSelection, computerSelection) {
   if (playerSelection == computerSelection) {
     showRoundResult('TIE');
@@ -131,10 +115,6 @@ function playRound(playerSelection, computerSelection) {
     showRoundResult('WIN');
     playerScore += 1;
   }
-
   updateScore();
-
-  console.log(`STANDING: Player=${playerScore} | Computer=${computerScore}`);
   checkWinner()
-
 }

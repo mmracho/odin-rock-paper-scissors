@@ -20,6 +20,27 @@ buttons.forEach(button => {
   button.addEventListener('click', startRound);
 });
 
+function showRoundResult(result) {
+  const roundText = document.querySelector('#round-result');
+  
+  roundText.className = 'fadeOut';
+  switch (result) {
+    case 'TIE':
+      roundText.textContent = "IT'S A TIE";
+      break;
+    case 'LOSE':
+      roundText.textContent = 'YOU LOSE';
+      break;
+    case 'WIN':
+      roundText.textContent = 'YOU WIN';
+      break;
+    default:
+      roundText.textContent = "It seems like something went wrong. You're not supposed to see this."
+  }
+  roundText.focus();
+  roundText.className = 'fadeIn';
+}
+
 function updateScore() {
   const currentComputerScore = document.querySelector('#computer-score');
   const currentPlayerScore = document.querySelector('#player-score');
@@ -35,9 +56,20 @@ function randomizeFlavorText() {
 }
 
 function resetGame() {
+  const playArea = document.querySelector('.play-area');
+  const matchResult = document.querySelector('.match-result');
+  playArea.classList.toggle('hide');
+  matchResult.classList.toggle('hide');
+  matchResult.classList.toggle('show');
+  resetScore()
+  updateScore();
+
+}
+
+function resetScore() {
   playerScore = 0;
   computerScore = 0;
-  console.log('Game Reset')
+  console.log('Score Reset')
 }
 
 function startRound() {
@@ -52,47 +84,54 @@ function getComputerChoice() {
   return choice = Math.floor((Math.random() * 3) + 1);
 }
 
+function showMatchEnd(result) {
+  const img = document.querySelector('img.end-img-win');
+  const playArea = document.querySelector('.play-area');
+  const matchResult = document.querySelector('.match-result');
+
+  if (result == 'WIN') img.src = './img/pose_win_boy.webp';
+  else img.src = './img/pose_lose_boy.webp';
+
+  playArea.classList.toggle('hide');
+  matchResult.classList.toggle('hide');
+  matchResult.classList.toggle('show');
+
+}
+
 function checkWinner() {
   if (playerScore === 5 || computerScore === 5) {
     // WE HAVE A WINNER
     if (playerScore === 5) {
       console.log(`You win! Player: ${playerScore} Computer: ${computerScore}`);
+      showMatchEnd('WIN');
     } else {
       console.log(`You lose! Player: ${playerScore} Computer: ${computerScore}`);
+      showMatchEnd('LOSE');
     }
-    return true;
-  } else {
-    // NO WINNER YET
-    return false;
   }
 }
 
 // Single round of game
 function playRound(playerSelection, computerSelection) {
   if (playerSelection == computerSelection) {
-    // console.log('TIE')
+    showRoundResult('TIE');
   } else if (playerSelection == 1 && computerSelection == 3) {
-    // console.log('WIN')
+    showRoundResult('WIN');
     playerScore += 1;
   } else if (computerSelection == 1 && playerSelection == 3) {
-    // console.log('LOSE')
+    showRoundResult('LOSE');
     computerScore += 1;
   } else if (playerSelection < computerSelection) {
-    // console.log('LOSE')
+    showRoundResult('LOSE');
     computerScore += 1;
   } else {
-    // console.log('WIN')
+    showRoundResult('WIN');
     playerScore += 1;
   }
-  
-  updateScore();
-  // Show result
 
-  // CHECK STANDING
+  updateScore();
+
   console.log(`STANDING: Player=${playerScore} | Computer=${computerScore}`);
-  if (checkWinner()) {
-    // Show WIN/LOSE
-    // Show reset button
-  }
+  checkWinner()
   
 }
